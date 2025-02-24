@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function QRCodeGenerator() {
   const [qrText, setQrText] = useState("");
@@ -15,24 +16,24 @@ export default function QRCodeGenerator() {
   };
 
   return (
-    <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
-      <p className="text-lg font-semibold mb-4">Enter your text or URL</p>
+    <div className="d-flex flex-column align-items-center p-4 bg-light min-vh-100">
+      <p className="fs-5 fw-semibold mb-3">Enter your text or URL</p>
       <input
         type="text"
         placeholder="Text or URL"
         value={qrText}
         onChange={(e) => setQrText(e.target.value)}
-        className="border p-2 rounded-md w-64 mb-4"
+        className="form-control w-50 mb-3"
       />
       <button
         onClick={generateQr}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className="btn btn-primary px-4 py-2"
       >
         Generate QR Code
       </button>
       {qrSrc && (
-        <div className="mt-4 p-4 bg-white rounded-lg shadow-md">
-          <img src={qrSrc} alt="QR Code" className="w-40 h-40" />
+        <div className="mt-4 p-3 bg-white rounded shadow">
+          <img src={qrSrc} alt="QR Code" className="w-100 h-auto" />
         </div>
       )}
     </div>
